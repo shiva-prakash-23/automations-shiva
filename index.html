@@ -101,7 +101,7 @@
       const removeProperties = document.getElementById("removeProperties");
       const removeContext = document.getElementById("removeContext");
       const addMetadata = document.getElementById("addMetadata");
-      var outputTextforSaving = document.getElementById("outputTextArea");
+      var filename = null;
 
       inputTextArea.addEventListener("input", updateOutput);
       removeProperties.addEventListener("input", updateOutput);
@@ -192,10 +192,14 @@
             type: "application/json",
           });
 
+          var jsonObject = JSON.parse(outputTextArea.value);
+
+          filename = jsonObject["configObjects"][0]["id"];
+
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");
           a.href = url;
-          a.download = "inputfile.json";
+          a.download = filename + ".json";
 
           a.click();
 
