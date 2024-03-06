@@ -165,13 +165,11 @@
             var totalOutput = {};
             if (
               jsonObject.hasOwnProperty("type") &&
-              jsonObject["type"] == "uiConfig"
+              (jsonObject["type"] == "uiConfig" || jsonObject["type"] == "scheduleobject"    )
             ) {
-              totalOutput.metaInfo = {
-                dataIndex: "config",
-                collectionName: "configObjects",
-                responseObjectName: "response",
-              };
+             
+              totalOutput.metaInfo = { dataIndex: "config", collectionName: "configObjects", responseObjectName: "response" };
+              totalOutput.metaInfo = jsonObject["type"] == "scheduleobject"? { dataIndex: "scheduleObject", collectionName: "scheduleObjects", responseObjectName: "response" } : totalOutput.metaInfo;
               totalOutput.configObjects = [];
               totalOutput.configObjects.push(jsonObject);
               jsonObject = totalOutput;
