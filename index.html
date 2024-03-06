@@ -170,8 +170,18 @@
              
               totalOutput.metaInfo = { dataIndex: "config", collectionName: "configObjects", responseObjectName: "response" };
               totalOutput.metaInfo = jsonObject["type"] == "scheduleobject"? { dataIndex: "scheduleObject", collectionName: "scheduleObjects", responseObjectName: "response" } : totalOutput.metaInfo;
-              totalOutput.configObjects = [];
-              totalOutput.configObjects.push(jsonObject);
+              if(jsonObject["type"] == "uiConfig")
+              {
+                totalOutput.metaInfo = { dataIndex: "config", collectionName: "configObjects", responseObjectName: "response" };
+                totalOutput.configObjects = [];
+                totalOutput.configObjects.push(jsonObject);
+              }
+              if(jsonObject["type"] == "scheduleobject")
+              {
+                totalOutput.metaInfo = { dataIndex: "scheduleObject", collectionName: "scheduleObjects", responseObjectName: "response" };
+                totalOutput.scheduleObjects = [];
+                totalOutput.scheduleObjects.push(jsonObject);
+              }
               jsonObject = totalOutput;
             }
           }
