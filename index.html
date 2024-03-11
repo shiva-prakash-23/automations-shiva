@@ -165,21 +165,14 @@
             var totalOutput = {};
             if (
               jsonObject.hasOwnProperty("type") &&
-              (jsonObject["type"] == "uiConfig" || jsonObject["type"] == "scheduleobject"    )
+              (jsonObject["type"] == "uiConfig" )
             ) {
              
-              if(jsonObject["type"] == "uiConfig")
-              {
-                totalOutput.metaInfo = { dataIndex: "config", collectionName: "configObjects", responseObjectName: "response" };
-                totalOutput.configObjects = [];
-                totalOutput.configObjects.push(jsonObject);
-              }
-              if(jsonObject["type"] == "scheduleobject")
-              {
+             
                 totalOutput.metaInfo = { dataIndex: "scheduleObject", collectionName: "scheduleObjects", responseObjectName: "response" };
                 totalOutput.scheduleObjects = [];
                 totalOutput.scheduleObjects.push(jsonObject);
-              }
+              
               jsonObject = totalOutput;
             }
           }
