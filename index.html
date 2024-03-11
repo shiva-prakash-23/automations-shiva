@@ -168,8 +168,6 @@
               (jsonObject["type"] == "uiConfig" || jsonObject["type"] == "scheduleobject"    )
             ) {
              
-              totalOutput.metaInfo = { dataIndex: "config", collectionName: "configObjects", responseObjectName: "response" };
-              totalOutput.metaInfo = jsonObject["type"] == "scheduleobject"? { dataIndex: "scheduleObject", collectionName: "scheduleObjects", responseObjectName: "response" } : totalOutput.metaInfo;
               if(jsonObject["type"] == "uiConfig")
               {
                 totalOutput.metaInfo = { dataIndex: "config", collectionName: "configObjects", responseObjectName: "response" };
